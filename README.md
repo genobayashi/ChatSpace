@@ -10,7 +10,7 @@
 ### messages table
 #### column
 ```
-t.text       :body, null: false  
+t.text       :body, null: false
 t.string     :image  
 t.references :user, foreign_key: true  
 t.references :group, foreign_key: true  
@@ -35,7 +35,7 @@ t.string :password, null:false
 ```
 has_many :messages  
 has_many :user_groups  
-has_many :groups, :through => :user_groups  
+has_many :groups, through: :user_groups  
 ```
 - - -
 
@@ -48,7 +48,7 @@ t.string :group_name
 ```
 has_many :messages  
 has_many :user_groups  
-has_many :users, :through => :user_groups  
+has_many :users, through: :user_groups  
 ```
 - - -
 
