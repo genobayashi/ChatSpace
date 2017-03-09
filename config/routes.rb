@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get 'chatspace' => 'users#index'
+  resources :chats, only: [:index]
 end

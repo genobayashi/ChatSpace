@@ -1,7 +1,7 @@
 header{
   height: 20px;
-  color: #FFFFFF;
-  background-color: #38AEF0;
+  color: $WhiteColor;
+  background-color: $LiteBlue;
   text-align: center;
 }
 
@@ -20,7 +20,7 @@ header{
 
       .my-nickname{
         float: left;
-        color: #FFFFFF;
+        color: $WhiteColor;
         font-size: 16px;
         font-weight: bold;
         line-height: 100px;
@@ -47,11 +47,11 @@ header{
       padding: 0 20px;
 
       .group-list {
-        color: #FFFFFF;
+        color: $WhiteColor;
 
         &__name{
           font-size: 15px;
-          padding: 20px 0 5px 0;
+          padding: 20px 0 5px;
         }
 
         &__message{
@@ -82,7 +82,7 @@ header{
         color: black;
         line-height: 40px;
         margin: 28px 40px 0 0;
-        border: solid #38AEF0;
+        border: solid $LiteBlue;
         padding: 0 20px;
       }
 
@@ -98,7 +98,7 @@ header{
       height: calc(100vh - 222px);
       background-color: #EEEEEE;
       border-top: 1px solid #BBBBBB;
-      padding: 6px 40px 0 40px;
+      padding: 6px 40px 0;
 
       .posted-content {
 
@@ -107,7 +107,7 @@ header{
           color: #434A54;
           font-size: 16px;
           font-weight: bold;
-          padding: 40px 0 10px 0;
+          padding: 40px 0 10px;
         }
 
         &__comment-time{
@@ -115,7 +115,7 @@ header{
           color: #999999;
           font-size: 12px;
           margin-left: 10px;
-          padding: 44px 0 10px 0;
+          padding: 44px 0 10px;
         }
 
         &__comment{
@@ -146,10 +146,10 @@ header{
         float: right;
         height: 50px;
         width: 100px;
-        color: #FFFFFF;
-        background-color: #38AEF0;
+        color: $WhiteColor;
+        background-color: $LiteBlue;
         line-height: 50px;
-        margin: 0 0 0 15px;
+        margin-left: 15px;
       }
 
       .fa-file-image-o{
