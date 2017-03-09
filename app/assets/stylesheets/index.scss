@@ -96,8 +96,8 @@ header{
 
     .right-content-center{
       height: calc(100vh - 222px);
-      background-color: #EEEEEE;
-      border-top: 1px solid #BBBBBB;
+      background-color: #EEE;
+      border-top: 1px solid #BBB;
       padding: 6px 40px 0;
 
       .posted-content {
@@ -112,7 +112,7 @@ header{
 
         &__comment-time{
           float: left;
-          color: #999999;
+          color: #999;
           font-size: 12px;
           margin-left: 10px;
           padding: 44px 0 10px;
