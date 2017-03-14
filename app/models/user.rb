@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :user_groups
   has_many :groups, through: :user_groups
 
+  validates :password, format: {with: /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/}
+
 end
