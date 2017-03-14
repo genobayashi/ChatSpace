@@ -6,10 +6,8 @@
     .left-content-top
       .my-nickname
         gen
-      = link_to '/chatspace' do
-        = fa_icon 'cog 2x'
-      = link_to '/chatspace' do
-        = fa_icon 'pencil-square-o 2x'
+      = link_to fa_icon('cog 2x'), edit_user_registration_path
+      = link_to fa_icon('pencil-square-o 2x')
     .left-content-bottom
       %ul.group-list
         %li.group-list__name
@@ -54,7 +52,6 @@
     .right-content-bottom
       = form_tag('', method: :get) do
         = text_field_tag :text, "", class: 'text-field', placeholder:'type a message'
-        = link_to "/chatspace" do
-          = fa_icon 'file-image-o'
+        = link_to fa_icon('file-image-o')
         = submit_tag 'Send', class: "send-btn"
 %footer
