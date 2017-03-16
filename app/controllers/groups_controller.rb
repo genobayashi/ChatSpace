@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
 
   def create
     Group.create(group_params)
+    redirect_to controller: :chats, action: :index
   end
 
   private
