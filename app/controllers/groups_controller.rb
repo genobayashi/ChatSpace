@@ -9,9 +9,10 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = Group.create(group_params)
+    @group = Group.new(group_params)
     if @group.save
-      redirect_to controller: :chats, action: :index, notice: 'チャットグループが作成されました。'
+      flash.now[:notice] = 'チャットグループが作成されました。'
+      render template: "chats/index"
     else
       flash.now[:alert] = 'グループが作成されませんでした。'
       render new_group_path
