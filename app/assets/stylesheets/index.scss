@@ -34,7 +34,7 @@
     }
 
     .left-content-bottom{
-      height: calc(100vh - 125px);
+      height: calc(100vh - 105px);
       width: 260px;
       background-color: #2f3e51;
       padding: 0 20px;
@@ -57,10 +57,13 @@
 
   .right-content{
     float: left;
+    height: calc(100vh - 5px);
     width: calc(100vw - 300px);
+    background-color: #EEE;
 
     .right-content-top{
       height: 100px;
+      background-color: $WhiteColor;
 
       .group-name{
         float: left;
@@ -88,7 +91,7 @@
     }
 
     .right-content-center{
-      height: calc(100vh - 222px);
+      height: calc(100vh - 202px);
       background-color: #EEE;
       border-top: 1px solid #BBB;
       padding: 6px 40px 0;
