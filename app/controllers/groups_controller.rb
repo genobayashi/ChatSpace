@@ -4,6 +4,16 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  def create
+    @group = Group.new(group_params)
+    if @group.save
+      redirect_to root_path, notice: 'グループが作成されました。'
+    else
+      flash.now[:alert] = 'グループが作成されませんでした。'
+      render :new
+    end
+  end
+
   def edit
     @group = Group.find(params[:id])
   end
@@ -15,16 +25,6 @@ class GroupsController < ApplicationController
     else
       flash.now[:alert] = 'グループの更新に失敗しました'
       render :edit
-    end
-  end
-
-  def create
-    @group = Group.new(group_params)
-    if @group.save
-      redirect_to root_path, notice: 'グループが作成されました。'
-    else
-      flash.now[:alert] = 'グループが作成されませんでした。'
-      render :new
     end
   end
 
