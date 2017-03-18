@@ -4,6 +4,7 @@ class GroupsController < ApplicationController
   before_action :set_users, except: [:index]
 
   def index
+    @groups = current_user.groups
   end
 
   def new
