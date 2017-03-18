@@ -6,7 +6,8 @@
         = @group.name
       = link_to 'Edit', edit_group_path(@group), class: 'edit-btn'
       .group-members
-        gen,daisuke,yamaguti
+        - @group.users.each do |members|
+          = members.nickname
     .right-content-center
       %ul.posted-content
         %li.posted-content__members-nickname
