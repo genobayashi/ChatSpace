@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   before_action :group_instance
 
   def index
-
+    @message = Message.where(group_id: @group.id)
   end
 
   def create
