@@ -17,7 +17,7 @@
         %p.right-content-center__comment
           = message.body
     .right-content-bottom
-      = form_for '' do |f|
+      = form_for ([@group,@message]) do |f|
         = f.text_field :body, class: 'text-field', placeholder:' type a message'
         = f.submit "send", class: "send-btn"
         = link_to fa_icon('file-image-o')
