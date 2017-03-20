@@ -31,8 +31,8 @@
         %li.posted-content__comment
           はい
     .right-content-bottom
-      = form_tag('', method: :get) do
-        = text_field_tag :text, "", class: 'text-field', placeholder:'type a message'
+      = form_for '' do |f|
+        = f.text_field :body, class: 'text-field', placeholder:' type a message'
+        = f.submit "send", class: "send-btn"
         = link_to fa_icon('file-image-o')
-        = submit_tag 'Send', class: "send-btn"
 %footer
