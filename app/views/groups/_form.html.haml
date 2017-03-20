@@ -1,4 +1,4 @@
-= form_for(group) do |f|
+= form_for @group do |f|
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
       = f.label :グループ名, class: "chat-group-form__label"
@@ -9,7 +9,7 @@
       = f.label :チャットメンバーを追加, class: "chat-group-form__label"
     .chat-group-form__field--right
       .chat-group-form__search.clearfix
-        = collection_check_boxes(:group, :user_ids, users, :id, :nickname, include_hidden: false) do |g|
+        = collection_check_boxes(:group, :user_ids, @users, :id, :nickname, include_hidden: false) do |g|
           = g.label { g.check_box + g.text }
   /     #user-search-result
   / .chat-group-form__field.clearfix
