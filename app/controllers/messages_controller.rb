@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   before_action :group_instance
 
   def index
-    @message = Message.where(group_id: @group.id)
+    @messages = @group.messages
   end
 
   def create
@@ -11,7 +11,8 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to group_messages_path(@group)
     else
-      flash.now[:alert] = 'メッセージの投稿に失敗しました。'
+      @messages = @group.messages
+      flash.now[:alert] = 'メッセージを入力してください。'
       render :index
     end
   end

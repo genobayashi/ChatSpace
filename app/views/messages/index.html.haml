@@ -9,7 +9,7 @@
         - @group.users.each do |members|
           = members.nickname
     .right-content-center
-      - @message.each do |message|
+      - @messages.each do |message|
         %p.right-content-center__members-nickname
           = message.user.nickname
         %p.right-content-center__comment-time
