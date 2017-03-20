@@ -7,5 +7,5 @@
   .left-content-bottom
     .group-list
       - @groups.each do |group|
-        = link_to group.name, group_messages_path(@groups), class: "group-list__name"
+        = link_to group.name, group_messages_path(group), class: "group-list__name"
         .group-list__message まだメッセージがありません
