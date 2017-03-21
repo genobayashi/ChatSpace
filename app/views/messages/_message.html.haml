@@ -1,0 +1,6 @@
+%p.right-content-center__members-nickname
+  = message.user.nickname
+%p.right-content-center__comment-time
+  = message.created_at.strftime("%Y-%m-%d %H:%M:%S")
+%p.right-content-center__comment
+  = message.body

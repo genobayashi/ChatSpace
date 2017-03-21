@@ -9,13 +9,7 @@
         - @group.users.each do |members|
           = members.nickname
     .right-content-center
-      - @messages.each do |message|
-        %p.right-content-center__members-nickname
-          = message.user.nickname
-        %p.right-content-center__comment-time
-          = message.created_at.strftime("%Y-%m-%d %H:%M:%S")
-        %p.right-content-center__comment
-          = message.body
+      = render partial: "message", collection: @messages
     .right-content-bottom
       = form_for ([@group, @message]) do |f|
         = f.text_field :body, class: 'text-field', placeholder:' type a message'
