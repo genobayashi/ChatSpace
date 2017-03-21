@@ -9,30 +9,10 @@
         - @group.users.each do |members|
           = members.nickname
     .right-content-center
-      %ul.posted-content
-        %li.posted-content__members-nickname
-          gen
-        %li.posted-content__comment-time
-          2016/10/02 06:27:07
-        %li.posted-content__comment
-          なるほど
-      %ul.posted-content
-        %li.posted-content__members-nickname
-          daisuke
-        %li.posted-content__comment-time
-          2016/10/02 06:27:14
-        %li.posted-content__comment
-          ふむ
-      %ul.posted-content
-        %li.posted-content__members-nickname
-          yamaguti
-        %li.posted-content__comment-time
-          2016/10/02 06:27:25
-        %li.posted-content__comment
-          はい
+      = render partial: "message", collection: @messages
     .right-content-bottom
-      = form_tag('', method: :get) do
-        = text_field_tag :text, "", class: 'text-field', placeholder:'type a message'
+      = form_for ([@group, @message]) do |f|
+        = f.text_field :body, class: 'text-field', placeholder:' type a message'
+        = f.submit "send", class: "send-btn"
         = link_to fa_icon('file-image-o')
-        = submit_tag 'Send', class: "send-btn"
 %footer
