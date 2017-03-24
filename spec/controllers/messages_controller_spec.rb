@@ -31,18 +31,19 @@ describe MessagesController do
   end
 
   describe 'POST #create' do
-    it "saves the new contact in the database" do
-      expect{
-        post :create, params: { message: attributes_for(:message), group_id: group.id }}.to change(Message, :count).by(1)
-    end
-
     context "successful save" do
       before do
         @message = attributes_for(:message)
       end
 
+      it "a new record is saved in the database" do
+        expect{
+          post :create, params: { message: @message, group_id: group.id }
+        }.to change(Message, :count).by(1)
+      end
+
       it "redirect to messages#index" do
-        post :create, params: { message:@message, group_id: group.id }
+        post :create, params: { message: @message, group_id: group.id }
         expect(response).to redirect_to group_messages_path(group)
       end
     end
@@ -52,9 +53,20 @@ describe MessagesController do
         @invalid_message = attributes_for(:invalid_message)
       end
 
+      it "is not saved in the database" do
+        expect{
+          post :create, params: { message: @invalid_message, group_id: group.id }
+        }.to change(Message, :count).by(0)
+      end
+
       it "redirect to messages#index" do
         post :create, params: { message: @invalid_message, group_id: group.id }
         expect(response).to render_template :index
+      end
+
+      it "sets a flsh[:alert]" do
+        post :create, params: { message: @invalid_message, group_id: group.id }
+        expect(flash[:alert]).to_not be_nil
       end
     end
   end
