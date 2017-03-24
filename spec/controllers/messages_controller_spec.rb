@@ -3,32 +3,29 @@ require 'rails_helper'
 describe MessagesController do
   login_user
   let(:group) { create(:group) }
-  # let(:group_id) {{group_id: group.id}}
-
 
   describe 'GET #index' do
-    it "assigns the requested contact @message" do
+    before do
       get :index, params: { group_id: group.id }
+    end
+
+    it "assigns the requested contact @message" do
       expect(assigns(:message)).to be_a_new(Message)
     end
 
     it "assigns the requested contact @group" do
-      get :index, params: { group_id: group.id }
       expect(assigns(:group)).to eq group
     end
 
     it "assigns the requested contact @groups" do
-      get :index, params: { group_id: group.id }
       expect(assigns(:groups)).to eq subject.current_user.groups
     end
 
     it "assigns the reqested contact @messages" do
-      get :index, params: { group_id: group.id }
       expect(assigns(:messages)).to eq group.messages
     end
 
     it "renders the :index template" do
-      get :index, params: { group_id: group.id }
       expect(response).to render_template :index
     end
   end
