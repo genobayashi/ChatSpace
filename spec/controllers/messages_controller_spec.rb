@@ -56,15 +56,15 @@ describe MessagesController do
       it "is not saved in the database" do
         expect{
           post :create, params: { message: @invalid_message, group_id: group.id }
-        }.to change(Message, :count).by(0)
+        }.not_to change(Message, :count)
       end
 
-      it "redirect to messages#index" do
+      it "render to messages#index" do
         post :create, params: { message: @invalid_message, group_id: group.id }
         expect(response).to render_template :index
       end
 
-      it "sets a flsh[:alert]" do
+      it "sets a flash[:alert]" do
         post :create, params: { message: @invalid_message, group_id: group.id }
         expect(flash[:alert]).to include("メッセージを入力してください。")
       end
