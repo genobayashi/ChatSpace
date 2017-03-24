@@ -52,7 +52,6 @@ describe MessagesController do
       end
     end
 
-    context "successful save" do
       before do
         @invalid_message = attributes_for(:invalid_message)
       end
