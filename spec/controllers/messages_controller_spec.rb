@@ -66,7 +66,6 @@ describe MessagesController do
 
       it "sets a flsh[:alert]" do
         post :create, params: { message: @invalid_message, group_id: group.id }
-        binding.pry
         expect(flash[:alert]).to include("メッセージを入力してください。")
       end
     end
