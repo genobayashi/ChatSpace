@@ -36,14 +36,14 @@ describe MessagesController do
         @message = attributes_for(:message)
       end
 
+      let(:post_create) {post :create, params: { message: @message, group_id: group.id }}
+
       it "a new record is saved in the database" do
-        expect{
-          post :create, params: { message: @message, group_id: group.id }
-        }.to change(Message, :count).by(1)
+        expect{ post_create }.to change(Message, :count).by(1)
       end
 
       it "redirect to messages#index" do
-        post :create, params: { message: @message, group_id: group.id }
+        post_create
         expect(response).to redirect_to group_messages_path(group)
       end
     end
@@ -53,19 +53,19 @@ describe MessagesController do
         @invalid_message = attributes_for(:invalid_message)
       end
 
+      let(:post_create_invalid) {post :create, params: { message: @invalid_message, group_id: group.id }}
+
       it "is not saved in the database" do
-        expect{
-          post :create, params: { message: @invalid_message, group_id: group.id }
-        }.not_to change(Message, :count)
+        expect{ post_create_invalid }.not_to change(Message, :count)
       end
 
       it "render to messages#index" do
-        post :create, params: { message: @invalid_message, group_id: group.id }
+        post_create_invalid
         expect(response).to render_template :index
       end
 
       it "sets a flash[:alert]" do
-        post :create, params: { message: @invalid_message, group_id: group.id }
+        post_create_invalid
         expect(flash[:alert]).to include("メッセージを入力してください。")
       end
     end
