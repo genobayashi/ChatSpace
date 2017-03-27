@@ -11,8 +11,8 @@
     .right-content-center
       = render partial: "message", collection: @messages
     .right-content-bottom
-      = form_for ([@group, @message]) do |f|
-        = f.text_field :body, class: 'text-field', placeholder:' type a message'
+      = form_for ([@group, @message]), html: { class: 'js-form' } do |f|
+        = f.text_field :body, class: 'js-form__text-field', placeholder:' type a message'
         = f.submit "send", class: "send-btn"
         = link_to fa_icon('file-image-o')
 %footer
