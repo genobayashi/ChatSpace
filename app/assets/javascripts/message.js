@@ -1,15 +1,16 @@
 $(function() {
-  function buildHTML(message) {
-    var member_nickname = $("<p class=member-nickname> #{message.user.nickname}");
-    var comment_time    = $("<p class=comment-time> #{message.created_at.strftime("%Y-%m-%d %H:%M:%S")}");
-    var comment         = $("<p class=comment> #{message.body}");
-    var html            = $('.content-center-ajax').append(member_nickname, comment_time, comment);
+
+  function buildHTML(message){
+    var html = (`<div class="content-center-ajax">
+                  <p class=right-content-center__members-nickname>${ message.nickname }</p>
+                  <p class=right-content-center__comment-time>${ message.created_at }</p>
+                  <p class=right-content-center__comment>${ message.body }</p></div>`);
     return html;
   }
 
   $('.js-form').on('submit', function(e) {
     e.preventDefault();
-    var textField = $('.js-form__text-field');
+    var textField = $('.text-field');
     var message = textField.val();
     var path_name = location.pathname;
     $.ajax({
@@ -23,7 +24,7 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      var html = buildHTML(data);
+      var html = buildHTML(data.message);
       $('.right-content-center').append(html);
       textField.val('');
     })
