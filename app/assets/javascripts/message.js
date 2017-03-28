@@ -10,6 +10,7 @@ $(function() {
 
   $('.js-form').on('submit', function(e) {
     e.preventDefault();
+    e.stopPropagation();
     var textField = $('.text-field');
     var message = textField.val();
     var path_name = location.pathname;
