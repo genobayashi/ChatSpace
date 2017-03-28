@@ -10,6 +10,7 @@
           = members.nickname
     .right-content-center
       = render partial: "message", collection: @messages
+      .cntent-center-ajax
     .right-content-bottom
       = form_for ([@group, @message]), html: { class: 'js-form' } do |f|
         = f.text_field :body, class: 'js-form__text-field', placeholder:' type a message'
