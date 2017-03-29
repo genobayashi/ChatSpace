@@ -1,10 +1,15 @@
 class GroupsController < ApplicationController
 
   before_action :set_group, only: [:edit, :update]
-  before_action :set_users, except: [:index]
+  before_action :set_users, except: [:index, :ajax_user_list]
 
   def index
     @groups = current_user.groups
+  end
+
+  def ajax_user_list
+    @user = User.where('nickname LIKE ?', "%#{params[:user_nickname]}%")
+    render 'user_list', formats: [:json], handlers: [:jbuilder]
   end
 
   def new
