@@ -42,11 +42,9 @@
 
   &__field {
     margin-top: 30px;
-    height: 55px;
 
     &--left {
       float: left;
-      height: 55px;
       width: 30%;
       padding-right: 20px;
       padding-left: 20px;
@@ -55,13 +53,16 @@
 
     &--right {
       float: right;
-      height: 55px;
       width: 70%;
       line-height: 55px;
-    }
 
-    .check-box{
-      margin-right: 10px;
+      .list{
+        height: 25px;
+        border-bottom: 1px solid $Lite-Gray;
+        font-size: 14px;
+        line-height: 25px;
+        padding: 10px;
+      }
     }
 
     .chat-group-form__label {
