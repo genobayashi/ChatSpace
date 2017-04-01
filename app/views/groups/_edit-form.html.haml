@@ -1,0 +1,35 @@
+= form_for @group do |f|
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :グループ名, class: "chat-group-form__label"
+    .chat-group-form__field--right
+      = f.text_field :name, placeholder: "グループ名を入力してください", class: "chat-group-form__input"
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :チャットメンバーを追加, class: "chat-group-form__label"
+    .chat-group-form__field--right
+      = text_field_tag :name,'', placeholder: "追加したいユーザ名を入力してください",id: 'keyword', class: 'chat-group-form__input'
+      #user-search-result
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--search.clearfix
+      %ul.clearfix
+        #user-list.clearfix
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+      = f.label :チャットメンバー, class: "chat-group-form__label"
+    .chat-group-form__field--right.clearfix
+      %ul.clearfix
+        .field-input.clearfix
+          %input{name: "group[user_ids][]", type: "hidden", value: "#{current_user.id}"}
+            %p.chat-group-form__field.chat-group-user #{current_user.nickname}
+            - if @other_users
+              - @other_users.each do |user|
+                .chat-group-form__field.clearfix
+                  %li.join-user
+                    %input{name: "group[user_ids][]", type: "hidden", value: "#{user.id}"}
+                    .chat-group-join-user-nickname #{user.nickname}
+                    %a.remove-user 削除
+  .chat-group-form__field.clearfix
+    .chat-group-form__field--left
+    .chat-group-form__field--right
+      = f.submit "送信", class: "chat-group-form__action-btn", data:{disable_with: "送信中"}

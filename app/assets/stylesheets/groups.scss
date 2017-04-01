@@ -41,12 +41,10 @@
   }
 
   &__field {
-    margin-top: 30px;
-    height: 55px;
 
     &--left {
+      margin-top: 30px;
       float: left;
-      height: 55px;
       width: 30%;
       padding-right: 20px;
       padding-left: 20px;
@@ -54,14 +52,66 @@
     }
 
     &--right {
+      margin-top: 30px;
       float: right;
-      height: 55px;
       width: 70%;
       line-height: 55px;
+
+      .chat-group-user{
+        height: 25px;
+        border-bottom: 1px solid $Lite-Gray;
+        font-size: 14px;
+        line-height: 25px;
+        padding: 10px;
+      }
+
+      .remove-user{
+        float: right;
+        display: inline-block;
+        cursor: pointer;
+        color: $OrangeColor;
+      }
+
+      .join-user{
+        height: 25px;
+        border-bottom: 1px solid $Lite-Gray;
+        font-size: 14px;
+        line-height: 25px;
+        padding: 10px;
+      }
+
+      .chat-group-join-user-nickname{
+        float: left;
+      }
     }
 
-    .check-box{
-      margin-right: 10px;
+    &--search{
+      float: right;
+      width: 70%;
+      line-height: 55px;
+
+      .list{
+        height: 25px;
+        border-bottom: 1px solid $Lite-Gray;
+        font-size: 14px;
+        line-height: 25px;
+        padding: 10px;
+      }
+
+      .no-member{
+        border-radius: 5px;
+        box-shadow: 0.5px 0.5px 1px 1px rgba(0,0,0,0.1) inset;
+        background-color: #eee;
+        margin: 10px;
+        padding: 10px;
+      }
+
+      .add-user{
+        float: right;
+        display: inline-block;
+        cursor: pointer;
+        color: $LiteBlue;
+      }
     }
 
     .chat-group-form__label {
@@ -77,31 +127,6 @@
       line-height: 30px;
       padding: 10px 15px;
       box-sizing: border-box;
-    }
-  }
-
-  .chat-group-user {
-    padding: 0 15px;
-    line-height: 50px;
-    font-size: 14px;
-    border-bottom: 1px solid $Lite-Gray;
-
-    &__name {
-      float: left;
-    }
-
-    &__btn {
-      float: right;
-      display: inline-block;
-      cursor: pointer;
-
-      &--add {
-        color: $LiteBlue;
-      }
-
-      &--remove {
-        color: $LiteBlue;
-      }
     }
   }
 
