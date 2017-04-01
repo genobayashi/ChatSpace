@@ -2,13 +2,14 @@ class GroupsController < ApplicationController
 
   before_action :set_group, only: [:edit, :update]
   before_action :set_users, except: [:index, :ajax_user_list]
+  before_action :set_users_except_current_user, only: [:edit]
 
   def index
     @groups = current_user.groups
   end
 
   def ajax_user_list
-    @user = User.where('nickname LIKE ?', "%#{params[:user_nickname]}%")
+    @user = User.where('nickname LIKE ?', "%#{params[:user_nickname]}%").where.not(id: current_user.id).order(:nickname)
     render 'user_list', formats: [:json], handlers: [:jbuilder]
   end
 
@@ -51,4 +52,7 @@ class GroupsController < ApplicationController
     @users = User.all
   end
 
+  def set_users_except_current_user
+    @other_users = @group.users.where.not(id: current_user.id)
+  end
 end
