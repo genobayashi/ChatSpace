@@ -94,6 +94,7 @@
     }
 
     .right-content-center{
+      overflow: scroll;
       height: calc(100vh - 202px);
       background-color: #EEE;
       border-top: 1px solid #BBB;
