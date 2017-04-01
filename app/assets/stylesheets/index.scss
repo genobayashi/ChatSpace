@@ -1,6 +1,9 @@
 .contents{
   @include clearfix();
   width: 100vw;
+  a:visited{
+    color: $WhiteColor;
+  }
 
   .left-content{
     float: left;
