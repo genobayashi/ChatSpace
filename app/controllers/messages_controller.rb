@@ -32,7 +32,7 @@ class MessagesController < ApplicationController
   end
 
   def set_groups
-    @groups = current_user.groups
+    @groups = current_user.groups.includes(:messages)
   end
 
   def set_messages

@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   before_action :set_users_except_current_user, only: [:edit]
 
   def index
-    @groups = current_user.groups
+    @groups = current_user.groups.includes(:messages)
   end
 
   def ajax_user_list
