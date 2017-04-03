@@ -1,6 +1,9 @@
 .contents{
   @include clearfix();
   width: 100vw;
+  a:visited{
+    color: $WhiteColor;
+  }
 
   .left-content{
     float: left;
@@ -91,6 +94,7 @@
     }
 
     .right-content-center{
+      overflow: scroll;
       height: calc(100vh - 202px);
       background-color: #EEE;
       border-top: 1px solid #BBB;

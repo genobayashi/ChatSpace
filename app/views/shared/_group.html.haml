@@ -1,0 +1,7 @@
+.group-list
+  =link_to group.name, group_messages_path(group), class: "group-list__name"
+  %p.group-list__message
+    - if group.messages.present?
+      = group.messages.last.body
+    - else
+      まだ新着メッセージがありません。
