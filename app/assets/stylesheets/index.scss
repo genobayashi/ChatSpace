@@ -130,7 +130,7 @@
       padding: 20px 40px;
       position: relative;
 
-      .text-field{
+      #text_field{
         float: left;
         height: 50px;
         width: calc(100vw - 519px);
@@ -148,12 +148,21 @@
         background-color: $LiteBlue;
         line-height: 50px;
         margin-left: 15px;
+        input[type="submit"]{
+          height: 50px;
+          width: 100px;
+          border: none;
+          color: $WhiteColor;
+          background-color: $LiteBlue;
+          cursor: pointer;
+        }
       }
 
       .fa-file-image-o{
         float: left;
         color: black;
         position: absolute;
+        cursor: pointer;
         right: 170px;
         top: 40px;
       }
