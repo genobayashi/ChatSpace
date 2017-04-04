@@ -13,7 +13,11 @@
       .cntent-center-ajax
     .right-content-bottom
       = form_for ([@group, @message]), html: { class: 'js-form' } do |f|
-        = f.text_field :body, class: 'text-field', placeholder:' type a message'
-        = f.submit "send", class: "send-btn"
-        = link_to fa_icon('file-image-o')
+        .text-field
+          = f.text_field :body, placeholder:' type a message', id:"text_field"
+        %label
+          = f.file_field :image, style: "display: none;", id: "file_field"
+          = fa_icon('file-image-o', id: "file_input_point")
+        .send-btn
+          = f.submit "send", id:"send-btn"
 %footer
