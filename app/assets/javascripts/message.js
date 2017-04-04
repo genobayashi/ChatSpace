@@ -1,28 +1,38 @@
 $(function() {
 
+  function imageSrc(message){
+    if(message.image.url == null){
+      return "";
+    } else {
+      var image_src= message.image.url
+      return image_src;
+    }
+  }
+
   function buildHTML(message){
     var html = (`<div class="content-center-ajax">
                   <p class=right-content-center__members-nickname>${ message.nickname }</p>
                   <p class=right-content-center__comment-time>${ message.created_at }</p>
-                  <p class=right-content-center__comment>${ message.body }</p></div>`);
+                  <p class=right-content-center__comment>${ message.body }</p>
+                  <image src= ${ imageSrc(message) }>
+                </div>`);
     return html;
   }
 
-  $('.js-form').on('submit', function(e) {
+  $('.right-content-bottom').on('submit', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    var textField = $('.text-field');
-    var message = textField.val();
+    var textField = $('#text_field');
+    var form = $('.js-form').get()[0];
+    var formData = new FormData(form);
     var path_name = location.pathname;
     $.ajax({
       type: 'POST',
       url: path_name,
-      data: {
-        message: {
-          body: message
-        }
-      },
-      dataType: 'json'
+      data: formData,
+      dataType: 'json',
+      processData: false,
+      contentType: false
     })
     .done(function(data) {
       var html = buildHTML(data.message);
@@ -32,5 +42,10 @@ $(function() {
     .fail(function() {
       alert('error');
     });
+  });
+
+  $('#file_field').change(function() {
+    $('#file_field').submit();
+    $('#file_field').val('');
   });
 });
