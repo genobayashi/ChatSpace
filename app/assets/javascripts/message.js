@@ -1,11 +1,21 @@
 $(function() {
 
+  function imageSrc(message){
+    if(message.image.url == null){
+      return "";
+    } else {
+      var image_src= message.image.url
+      return image_src;
+    }
+  }
+
   function buildHTML(message){
     var html = (`<div class="content-center-ajax">
                   <p class=right-content-center__members-nickname>${ message.nickname }</p>
                   <p class=right-content-center__comment-time>${ message.created_at }</p>
                   <p class=right-content-center__comment>${ message.body }</p>
-                  <image src= ${ message.image.url }></div>`);
+                  <image src= ${ imageSrc(message) }>
+                </div>`);
     return html;
   }
 
