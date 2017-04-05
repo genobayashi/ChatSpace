@@ -39,6 +39,8 @@ gem 'devise'
 gem 'jquery-turbolinks'
 gem 'carrierwave'
 gem 'rmagick'
+gem 'fog'
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
