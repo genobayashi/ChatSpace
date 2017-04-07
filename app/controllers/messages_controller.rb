@@ -7,13 +7,17 @@ class MessagesController < ApplicationController
 
   def index
     @message = Message.new
+    respond_to do |format|
+      format.html
+      format.json { render "update_message.json.jbuilder" }
+    end
   end
 
   def create
     @message = @group.messages.new(message_params)
     if @message.save
       respond_to do |format|
-        format.html { redirect_to group_messages_path(@group) }
+        format.html { redirect_to group_messages_path(group) }
         format.json { render "message_index.json.jbuilder"}
       end
     else
