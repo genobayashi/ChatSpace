@@ -10,10 +10,10 @@ $(function() {
   }
 
   function buildHTML(message){
-    var html = (`<div class="content-center-ajax">
-                  <p class=right-content-center__members-nickname>${ message.nickname }</p>
-                  <p class=right-content-center__comment-time>${ message.created_at }</p>
-                  <p class=right-content-center__comment>${ message.body }</p>
+    var html = (`<div class="cntent-center-ajax" data-message_id=${message.id}>
+                  <p class=cntent-center-ajax__members-nickname>${ message.nickname }</p>
+                  <p class=cntent-center-ajax__comment-time>${ message.created_at }</p>
+                  <p class=cntent-center-ajax__comment>${ message.body }</p>
                   <image src= ${ imageSrc(message) }>
                 </div>`);
     return html;
@@ -51,14 +51,16 @@ $(function() {
 
   var setIV = setInterval(function(){
     var path_name = location.pathname;
+    var last_message_id = $('.cntent-center-ajax').last().data('message_id');
+    console.log(last_message_id);
     if ( path_name.match( /messages/ )) {
       $.ajax({
         type: 'GET',
         url: path_name,
+        data: { last_message_id: last_message_id },
         dataType: 'json',
       })
       .done(function(data) {
-        $('.right-content-center').empty();
         $.each( data.update_message, function( i, message ) {
           var html = buildHTML(message);
           $('.right-content-center').append(html);
