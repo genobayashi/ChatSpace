@@ -52,7 +52,6 @@ $(function() {
   var setIV = setInterval(function(){
     var path_name = location.pathname;
     var last_message_id = $('.cntent-center-ajax').last().data('message_id');
-    console.log(last_message_id);
     if ( path_name.match( /messages/ )) {
       $.ajax({
         type: 'GET',
