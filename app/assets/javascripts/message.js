@@ -48,4 +48,27 @@ $(function() {
     $('#file_field').submit();
     $('#file_field').val('');
   });
+
+  var setIV = setInterval(function(){
+    var path_name = location.pathname;
+    if ( path_name.match( /messages/ )) {
+      $.ajax({
+        type: 'GET',
+        url: path_name,
+        dataType: 'json',
+      })
+      .done(function(data) {
+        $('.right-content-center').empty();
+        $.each( data.update_message, function( i, message ) {
+          var html = buildHTML(message);
+          $('.right-content-center').append(html);
+        });
+      })
+      .fail(function() {
+        alert('error');
+      });
+    } else {
+      clearInterval(setIV);
+    }
+  }, 5000);
 });
