@@ -6,8 +6,9 @@ class MessagesController < ApplicationController
 
 
   def index
+    last_id = params[:last_message_id]
     @message = Message.new
-    @add_messages = @group.messages.where( "id > ?", params[:last_message_id])
+    @add_messages = @group.messages.after_id(last_id)
     respond_to do |format|
       format.html
       format.json { render "update_message.json.jbuilder" }
