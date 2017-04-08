@@ -4,8 +4,8 @@ $(function() {
     if(message.image.url == null){
       return "";
     } else {
-      var image_src= message.image.url
-      return image_src;
+      var imgUrl= message.image.url
+      return imgUrl;
     }
   }
 
@@ -25,10 +25,10 @@ $(function() {
     var textField = $('#text_field');
     var form = $('.js-form').get()[0];
     var formData = new FormData(form);
-    var path_name = location.pathname;
+    var pathName = location.pathname;
     $.ajax({
       type: 'POST',
-      url: path_name,
+      url: pathName,
       data: formData,
       dataType: 'json',
       processData: false,
@@ -50,13 +50,13 @@ $(function() {
   });
 
   var setIV = setInterval(function(){
-    var path_name = location.pathname;
-    var last_message_id = $('.cntent-center-ajax').last().data('message_id');
-    if ( path_name.match( /messages/ )) {
+    var pathName = location.pathname;
+    var lastMessageId = $('.cntent-center-ajax').last().data('message_id');
+    if ( pathName.match( /messages/ )) {
       $.ajax({
         type: 'GET',
-        url: path_name,
-        data: { last_message_id: last_message_id },
+        url: pathName,
+        data: { lastMessageId: lastMessageId },
         dataType: 'json',
       })
       .done(function(data) {

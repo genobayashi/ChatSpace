@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
 
 
   def index
-    last_id = params[:last_message_id]
+    last_id = params[:lastMessageId]
     @message = Message.new
     @add_messages = @group.messages.after_id(last_id)
     respond_to do |format|

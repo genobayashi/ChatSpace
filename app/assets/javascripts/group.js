@@ -1,6 +1,6 @@
 $(function() {
   var list = $("#user-list");
-  var no_member = $('<p class="no-member"> 一致するメンバーはいません </p>')
+  var noMember = $('<p class="no-member"> 一致するメンバーはいません </p>')
   var preWord;
 
   function appendList(user) {
@@ -11,9 +11,9 @@ $(function() {
     list.append(item);
   }
 
-  function add_user_result(nickname, user_id) {
+  function addUserResult(nickname, userId) {
     var member = $(`<li class="chat-group-user">
-                      <input name="group[user_ids][]" type="hidden" value=${user_id}>
+                      <input name="group[user_ids][]" type="hidden" value=${userId}>
                       ${nickname}
                       <a class="remove-user"> 削除 </a>
                     </li>`);
@@ -31,15 +31,15 @@ $(function() {
       dataType: 'json'
     })
     .done(function(data) {
-      var users_info = data.user_list.user;
+      var usersInfo = data.user_list.user;
       if ( input != preWord ) {
         $('.list').remove();
         if(input.length !== 0) {
-          $.each(users_info, function(i, user){
+          $.each(usersInfo, function(i, user){
             appendList(user);
           });
           if($(".list").length === 0){
-            list.append(no_member);
+            list.append(noMember);
           }
         }
       }
@@ -52,8 +52,8 @@ $(function() {
   $("#user-list").on('click','.add-user', function(){
     $(this).parent().remove();
     var nickname = $(this).parent().data('user_nickname');
-    var user_id = $(this).parent().data('user_id');
-    add_user_result(nickname, user_id);
+    var userId = $(this).parent().data('user_id');
+    addUserResult(nickname, userId);
   });
 
   $(".field-input").on('click', '.remove-user', function(){
